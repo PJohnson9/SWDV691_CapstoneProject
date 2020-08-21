@@ -4,6 +4,9 @@ C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\o
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.AssemblyInfoInputs.cache
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.AssemblyInfo.cs
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\bin\Debug\netcoreapp3.1\MileageTracker.Data.pdb
-C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.csproj.CoreCompileInputs.cache
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.dll
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.pdb
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\bin\Debug\netcoreapp3.1\MileageTracker.Data.runtimeconfig.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\bin\Debug\netcoreapp3.1\MileageTracker.Data.runtimeconfig.dev.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.csproj.CoreCompileInputs.cache
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.genruntimeconfig.cache
