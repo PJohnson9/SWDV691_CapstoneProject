@@ -2546,6 +2546,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "MileageTracker.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7"
+        },
+        "compile": {
+          "bin/placeholder/MileageTracker.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MileageTracker.Data.dll": {}
+        }
       }
     }
   },
@@ -8305,12 +8318,18 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "MileageTracker.Data/1.0.0": {
+      "type": "project",
+      "path": "../../MileageTracker.Data/MileageTracker.Data.csproj",
+      "msbuildProject": "../../MileageTracker.Data/MileageTracker.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.7",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
+      "MileageTracker.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8342,7 +8361,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker.Data\\MileageTracker.Data.csproj": {
+              "projectPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker.Data\\MileageTracker.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

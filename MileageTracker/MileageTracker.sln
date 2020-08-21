@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MileageTracker", "MileageTracker\MileageTracker.csproj", "{1B121283-B756-4A46-8ABC-EE38127BC1B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C01954D9-67FC-4BDF-A7E8-A4FA383FAE60} = {C01954D9-67FC-4BDF-A7E8-A4FA383FAE60}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileageTracker.Data", "..\MileageTracker.Data\MileageTracker.Data.csproj", "{C01954D9-67FC-4BDF-A7E8-A4FA383FAE60}"
 EndProject

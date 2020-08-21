@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using MileageTracker.Models;
+using MileageTracker.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace MileageTracker
 {
     public class Startup
@@ -24,6 +28,8 @@ namespace MileageTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<MTContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MTContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
