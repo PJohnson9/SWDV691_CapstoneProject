@@ -1,0 +1,5 @@
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\bin\Debug\netcoreapp3.1\MileageTracker.Data.deps.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\bin\Debug\netcoreapp3.1\MileageTracker.Data.dll
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.csprojAssemblyReference.cache
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.AssemblyInfoInputs.cache
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker.Data\obj\Debug\netcoreapp3.1\MileageTracker.Data.AssemblyInfo.cs
