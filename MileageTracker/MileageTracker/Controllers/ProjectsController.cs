@@ -22,7 +22,7 @@ namespace MileageTracker.Controllers
         // GET: Projects
         public async Task<IActionResult> Index()
         {
-            var mTContext = _context.Project.Include(p => p.Client);
+            var mTContext = _context.Projects.Include(p => p.Client);
             return View(await mTContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
-            var project = await _context.Project
+            var project = await _context.Projects
                 .Include(p => p.Client)
                 .FirstOrDefaultAsync(m => m.ProjectID == id);
             if (project == null)
@@ -48,7 +48,7 @@ namespace MileageTracker.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
-            ViewData["ClientID"] = new SelectList(_context.Client, "ClientID", "ClientID");
+            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace MileageTracker.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientID"] = new SelectList(_context.Client, "ClientID", "ClientID", project.ClientID);
+            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name", project.ClientID);
             return View(project);
         }
 
@@ -77,12 +77,12 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
-            var project = await _context.Project.FindAsync(id);
+            var project = await _context.Projects.FindAsync(id);
             if (project == null)
             {
                 return NotFound();
             }
-            ViewData["ClientID"] = new SelectList(_context.Client, "ClientID", "ClientID", project.ClientID);
+            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name", project.ClientID);
             return View(project);
         }
 
@@ -118,7 +118,7 @@ namespace MileageTracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientID"] = new SelectList(_context.Client, "ClientID", "ClientID", project.ClientID);
+            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name", project.ClientID);
             return View(project);
         }
 
@@ -130,7 +130,7 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
-            var project = await _context.Project
+            var project = await _context.Projects
                 .Include(p => p.Client)
                 .FirstOrDefaultAsync(m => m.ProjectID == id);
             if (project == null)
@@ -146,15 +146,15 @@ namespace MileageTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var project = await _context.Project.FindAsync(id);
-            _context.Project.Remove(project);
+            var project = await _context.Projects.FindAsync(id);
+            _context.Projects.Remove(project);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProjectExists(int id)
         {
-            return _context.Project.Any(e => e.ProjectID == id);
+            return _context.Projects.Any(e => e.ProjectID == id);
         }
     }
 }

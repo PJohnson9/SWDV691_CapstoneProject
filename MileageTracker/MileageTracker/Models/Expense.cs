@@ -10,6 +10,8 @@ namespace MileageTracker.Models
     public class Expense
     {
         public int ExpenseID { get; set; }
+
+        [Display(Name = "Project")]
         public int ProjectID { get; set; }
         public Project Project { get; set; }
 

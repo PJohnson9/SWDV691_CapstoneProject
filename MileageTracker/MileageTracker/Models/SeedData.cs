@@ -17,12 +17,18 @@ namespace MileageTracker.Models
                     DbContextOptions<MTContext>>()))
             {
                 // Look for any clients.
-                if (context.Client.Any())
+                if (context.Clients.Any())
                 {
                     return;   // DB has been seeded
                 }
 
-                context.Client.AddRange(
+                Client Acme = new Client
+                {
+                    UserID = 1,
+                    Name = "Acme Incorporated"
+                };
+
+                context.Clients.AddRange(
                     new Client
                     {
                         UserID = 1,
@@ -33,11 +39,7 @@ namespace MileageTracker.Models
                         UserID = 1,
                         Name = "Other Client"
                     },
-                    new Client
-                    {
-                        UserID = 1,
-                        Name = "Acme Incorporated"
-                    },
+                    Acme,
                     new Client
                     {
                         UserID = 1,
@@ -45,6 +47,21 @@ namespace MileageTracker.Models
                     }
 
                     );
+
+                context.Vehicles.AddRange(
+                    new Vehicle
+                    {
+                        UserID = 1,
+                        Name = "Car"
+                    },
+                    new Vehicle
+                    {
+                        UserID = 1,
+                        Name = "Van"
+                    }
+                    );
+
+
 
                 context.SaveChanges();
             }

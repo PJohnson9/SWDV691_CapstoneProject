@@ -22,7 +22,7 @@ namespace MileageTracker.Controllers
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Client.ToListAsync());
+            return View(await _context.Clients.ToListAsync());
         }
 
         // GET: Clients/Details/5
@@ -33,7 +33,7 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Client
+            var client = await _context.Clients
                 .FirstOrDefaultAsync(m => m.ClientID == id);
             if (client == null)
             {
@@ -73,7 +73,7 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Client.FindAsync(id);
+            var client = await _context.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Client
+            var client = await _context.Clients
                 .FirstOrDefaultAsync(m => m.ClientID == id);
             if (client == null)
             {
@@ -139,15 +139,15 @@ namespace MileageTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var client = await _context.Client.FindAsync(id);
-            _context.Client.Remove(client);
+            var client = await _context.Clients.FindAsync(id);
+            _context.Clients.Remove(client);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ClientExists(int id)
         {
-            return _context.Client.Any(e => e.ClientID == id);
+            return _context.Clients.Any(e => e.ClientID == id);
         }
     }
 }

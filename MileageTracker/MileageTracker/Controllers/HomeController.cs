@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using MileageTracker.Data;
 using MileageTracker.Models;
 
 namespace MileageTracker.Controllers
@@ -12,15 +14,19 @@ namespace MileageTracker.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly MTContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MTContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var mTContext = _context.Expenses.Include(e => e.Project);
+            return View(await mTContext.ToListAsync());
+
         }
 
         public IActionResult Privacy()

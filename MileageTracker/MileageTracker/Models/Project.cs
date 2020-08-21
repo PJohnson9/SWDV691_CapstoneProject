@@ -11,6 +11,7 @@ namespace MileageTracker.Models
     {
         public int ProjectID { get; set; }
 
+        [Display(Name = "Client")]
         public int ClientID { get; set; }
         public Client Client { get; set; }
         public int UserID { get; set; }

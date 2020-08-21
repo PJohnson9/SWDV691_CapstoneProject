@@ -34,7 +34,7 @@ namespace MileageTracker.Migrations
 
                     b.HasKey("ClientID");
 
-                    b.ToTable("Client");
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("MileageTracker.Models.Expense", b =>
@@ -45,7 +45,7 @@ namespace MileageTracker.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -53,12 +53,20 @@ namespace MileageTracker.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProjectID")
                         .HasColumnType("int");
 
                     b.HasKey("ExpenseID");
 
-                    b.ToTable("Expense");
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("Expenses");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Expense");
                 });
 
             modelBuilder.Entity("MileageTracker.Models.Project", b =>
@@ -71,15 +79,89 @@ namespace MileageTracker.Migrations
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProjectID");
+
+                    b.HasIndex("ClientID");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("MileageTracker.Models.Vehicle", b =>
+                {
+                    b.Property<int>("VehicleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProjectID");
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
 
-                    b.ToTable("Project");
+                    b.HasKey("VehicleID");
+
+                    b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("MileageTracker.Models.Trip", b =>
+                {
+                    b.HasBaseType("MileageTracker.Models.Expense");
+
+                    b.Property<decimal>("BeginMileage")
+                        .HasColumnType("decimal(18, 1)");
+
+                    b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("EndMileage")
+                        .HasColumnType("decimal(18, 1)");
+
+                    b.Property<decimal>("Fee")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("FeeDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VehicleID")
+                        .HasColumnType("int");
+
+                    b.HasIndex("VehicleID");
+
+                    b.HasDiscriminator().HasValue("Trip");
+                });
+
+            modelBuilder.Entity("MileageTracker.Models.Expense", b =>
+                {
+                    b.HasOne("MileageTracker.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MileageTracker.Models.Project", b =>
+                {
+                    b.HasOne("MileageTracker.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MileageTracker.Models.Trip", b =>
+                {
+                    b.HasOne("MileageTracker.Models.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
