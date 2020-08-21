@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PJohnson\\source\\repos\\MileageTracker\\MileageTracker\\MileageTracker.csproj": {}
+    "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PJohnson\\source\\repos\\MileageTracker\\MileageTracker\\MileageTracker.csproj": {
+    "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PJohnson\\source\\repos\\MileageTracker\\MileageTracker\\MileageTracker.csproj",
+        "projectUniqueName": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj",
         "projectName": "MileageTracker",
-        "projectPath": "C:\\Users\\PJohnson\\source\\repos\\MileageTracker\\MileageTracker\\MileageTracker.csproj",
+        "projectPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj",
         "packagesPath": "C:\\Users\\PJohnson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PJohnson\\source\\repos\\MileageTracker\\MileageTracker\\obj\\",
+        "outputPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

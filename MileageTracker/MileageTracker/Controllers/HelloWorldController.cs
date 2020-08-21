@@ -9,18 +9,18 @@ namespace MileageTracker.Controllers
 {
     public class HelloWorldController : Controller
     {
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        // 
-        // GET: /HelloWorld/
-
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View();
         }
+
+        //// 
+        //// GET: /HelloWorld/
+
+        //public string Index()
+        //{
+        //    return "This is my default action...";
+        //}
 
         // 
         // GET: /HelloWorld/Welcome/ 
