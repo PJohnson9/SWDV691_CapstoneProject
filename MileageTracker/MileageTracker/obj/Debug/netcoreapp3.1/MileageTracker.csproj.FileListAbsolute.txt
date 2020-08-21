@@ -143,6 +143,4 @@ C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\Mileag
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\MileageTracker.csproj.CoreCompileInputs.cache
-C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\MileageTracker.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\Razor\Views\HelloWorld\Index.cshtml.g.cs

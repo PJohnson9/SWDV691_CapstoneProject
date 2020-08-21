@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj": {}
+    "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker.Data\\MileageTracker.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj": {
+    "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker.Data\\MileageTracker.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj",
-        "projectName": "MileageTracker",
-        "projectPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\MileageTracker.csproj",
+        "projectUniqueName": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker.Data\\MileageTracker.Data.csproj",
+        "projectName": "MileageTracker.Data",
+        "projectPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker.Data\\MileageTracker.Data.csproj",
         "packagesPath": "C:\\Users\\PJohnson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\obj\\",
+        "outputPath": "C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,16 +40,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[3.1.4, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -61,9 +51,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
