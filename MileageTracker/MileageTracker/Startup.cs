@@ -10,8 +10,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using MileageTracker.Models;
+using MileageTracker.Services;
 using MileageTracker.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace MileageTracker
 {
@@ -27,9 +30,29 @@ namespace MileageTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
             services.AddControllersWithViews();
 
             services.AddDbContext<MTContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MTContext")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<MTContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddTransient<IEmailSender, EmailSender>(e =>
+               new EmailSender(Configuration["EmailSettings:host"],
+               Configuration.GetValue<int>("EmailSettings:port"),
+               Configuration.GetValue<bool>("EmailSettings:enableSSL"),
+               Configuration["EmailSettings:UserName"],
+               Configuration["EmailSettings:Password"]));
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,10 +73,14 @@ namespace MileageTracker
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages(); // Supports Identity
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
