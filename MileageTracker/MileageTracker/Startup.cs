@@ -15,6 +15,7 @@ using MileageTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MileageTracker
 {
@@ -39,6 +40,13 @@ namespace MileageTracker
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<MTContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
 
             services.AddTransient<IEmailSender, EmailSender>(e =>
                new EmailSender(Configuration["EmailSettings:host"],

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +16,21 @@ namespace MileageTracker.Controllers
     public class ProjectsController : Controller
     {
         private readonly MTContext _context;
+        private readonly UserManager<IdentityUser> _manager;
+        private String _userID;
 
-        public ProjectsController(MTContext context)
+        public ProjectsController(MTContext context, UserManager<IdentityUser> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         // GET: Projects
         public async Task<IActionResult> Index()
         {
-            var mTContext = _context.Projects.Include(p => p.Client);
+            _userID = _manager.GetUserId(HttpContext.User);
+
+            var mTContext = _context.Projects.Include(p => p.Client).Where(p => p.UserGUID == _userID);
             return View(await mTContext.ToListAsync());
         }
 
@@ -34,9 +42,10 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
+            _userID = _manager.GetUserId(HttpContext.User);
             var project = await _context.Projects
                 .Include(p => p.Client)
-                .FirstOrDefaultAsync(m => m.ProjectID == id);
+                .FirstOrDefaultAsync(m => m.ProjectID == id && m.UserGUID == _userID);
             if (project == null)
             {
                 return NotFound();
@@ -48,7 +57,8 @@ namespace MileageTracker.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
-            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name");
+            _userID = _manager.GetUserId(HttpContext.User);
+            ViewData["ClientID"] = new SelectList(_context.Clients.Where(p => p.UserGUID == _userID), "ClientID", "Name");
             return View();
         }
 
@@ -59,13 +69,16 @@ namespace MileageTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProjectID,ClientID,UserID,Name")] Project project)
         {
+            _userID = _manager.GetUserId(HttpContext.User);
+
             if (ModelState.IsValid)
             {
+                project.UserGUID = _userID;
                 _context.Add(project);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name", project.ClientID);
+            ViewData["ClientID"] = new SelectList(_context.Clients.Where(p => p.UserGUID == _userID), "ClientID", "Name", project.ClientID);
             return View(project);
         }
 
@@ -77,12 +90,13 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
+            _userID = _manager.GetUserId(HttpContext.User);
             var project = await _context.Projects.FindAsync(id);
             if (project == null)
             {
                 return NotFound();
             }
-            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name", project.ClientID);
+            ViewData["ClientID"] = new SelectList(_context.Clients.Where(p => p.UserGUID == _userID), "ClientID", "Name", project.ClientID);
             return View(project);
         }
 
@@ -91,7 +105,7 @@ namespace MileageTracker.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProjectID,ClientID,UserID,Name")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("ProjectID,ClientID,Name")] Project project)
         {
             if (id != project.ProjectID)
             {
@@ -118,7 +132,9 @@ namespace MileageTracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientID"] = new SelectList(_context.Clients, "ClientID", "Name", project.ClientID);
+
+            _userID = _manager.GetUserId(HttpContext.User);
+            ViewData["ClientID"] = new SelectList(_context.Clients.Where(p => p.UserGUID == _userID), "ClientID", "Name", project.ClientID);
             return View(project);
         }
 

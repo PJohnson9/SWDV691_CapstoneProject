@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +14,21 @@ namespace MileageTracker.Controllers
     public class ExpensesController : Controller
     {
         private readonly MTContext _context;
+        private readonly UserManager<IdentityUser> _manager;
+        private String _userID;
 
-        public ExpensesController(MTContext context)
+        public ExpensesController(MTContext context, UserManager<IdentityUser> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         // GET: Expenses
         public async Task<IActionResult> Index()
         {
-            var mTContext = _context.Expenses.Include(e => e.Project);
+            _userID = _manager.GetUserId(HttpContext.User);
+
+            var mTContext = _context.Expenses.Include(e => e.Project).Where(e => e.UserGUID == _userID);
             return View(await mTContext.ToListAsync());
         }
 

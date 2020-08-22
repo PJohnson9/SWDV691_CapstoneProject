@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MileageTracker.Data;
+using Microsoft.AspNetCore.Identity;
 using MileageTracker.Models;
 
 namespace MileageTracker.Controllers
@@ -13,16 +14,21 @@ namespace MileageTracker.Controllers
     public class ClientsController : Controller
     {
         private readonly MTContext _context;
+        private readonly UserManager<IdentityUser> _manager;
+        private String _userID;
 
-        public ClientsController(MTContext context)
+        public ClientsController(MTContext context, UserManager<IdentityUser> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Clients.ToListAsync());
+            _userID = _manager.GetUserId(HttpContext.User);
+
+            return View(await _context.Clients.Where(c => c.UserGUID == _userID).ToListAsync());
         }
 
         // GET: Clients/Details/5
@@ -54,8 +60,12 @@ namespace MileageTracker.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientID,UserID,Name")] Client client)
+        public async Task<IActionResult> Create([Bind("ClientID,Name")] Client client)
         {
+
+            _userID = _manager.GetUserId(HttpContext.User);
+
+            client.UserGUID = _userID;
             if (ModelState.IsValid)
             {
                 _context.Add(client);
@@ -86,7 +96,7 @@ namespace MileageTracker.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClientID,UserID,Name")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("ClientID,Name")] Client client)
         {
             if (id != client.ClientID)
             {

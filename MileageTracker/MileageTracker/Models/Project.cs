@@ -14,7 +14,10 @@ namespace MileageTracker.Models
         [Display(Name = "Client")]
         public int ClientID { get; set; }
         public Client Client { get; set; }
+
+        [Obsolete]
         public int UserID { get; set; }
+        public string UserGUID { get; set; }
         public string Name { get; set; }
 
     }

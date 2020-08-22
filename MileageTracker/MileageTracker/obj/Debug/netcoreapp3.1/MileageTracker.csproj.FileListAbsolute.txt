@@ -287,3 +287,6 @@ C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\Mileag
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.MileageTrackerTestDeployment - Web Deploy.json
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MileageTrackerTestDeployment - Web Deploy\mssql1.arm.json
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MileageTrackerTestDeployment - Web Deploy\profile.arm.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.MileageTrackerApp - Web Deploy.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MileageTrackerApp - Web Deploy\mssql1.arm.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MileageTrackerApp - Web Deploy\profile.arm.json

@@ -15,6 +15,8 @@ namespace MileageTracker.Models
         public int ProjectID { get; set; }
         public Project Project { get; set; }
 
+        public string UserGUID { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public string Description { get; set; }
