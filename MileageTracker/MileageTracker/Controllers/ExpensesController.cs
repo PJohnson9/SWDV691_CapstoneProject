@@ -54,7 +54,8 @@ namespace MileageTracker.Controllers
         // GET: Expenses/Create
         public IActionResult Create()
         {
-            ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectID");
+            _userID = _manager.GetUserId(HttpContext.User);
+            ViewData["ProjectID"] = new SelectList(_context.Projects.Where(p => p.UserGUID == _userID), "ProjectID", "Name");
             return View();
         }
 
@@ -65,13 +66,17 @@ namespace MileageTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ExpenseID,ProjectID,Date,Description,Amount")] Expense expense)
         {
+            _userID = _manager.GetUserId(HttpContext.User);
+
             if (ModelState.IsValid)
             {
+                expense.UserGUID = _userID;
                 _context.Add(expense);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectID", expense.ProjectID);
+
+            ViewData["ProjectID"] = new SelectList(_context.Projects.Where(p => p.UserGUID == _userID), "ProjectID", "Name", expense.ProjectID);
             return View(expense);
         }
 
@@ -83,12 +88,13 @@ namespace MileageTracker.Controllers
                 return NotFound();
             }
 
+            _userID = _manager.GetUserId(HttpContext.User);
             var expense = await _context.Expenses.FindAsync(id);
             if (expense == null)
             {
                 return NotFound();
             }
-            ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectID", expense.ProjectID);
+            ViewData["ProjectID"] = new SelectList(_context.Projects.Where(p => p.UserGUID == _userID), "ProjectID", "Name", expense.ProjectID);
             return View(expense);
         }
 
@@ -103,6 +109,8 @@ namespace MileageTracker.Controllers
             {
                 return NotFound();
             }
+
+            _userID = _manager.GetUserId(HttpContext.User);
 
             if (ModelState.IsValid)
             {
@@ -124,7 +132,7 @@ namespace MileageTracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectID", expense.ProjectID);
+            ViewData["ProjectID"] = new SelectList(_context.Projects.Where(p => p.UserGUID == _userID), "ProjectID", "Name", expense.ProjectID);
             return View(expense);
         }
 

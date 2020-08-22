@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +14,20 @@ namespace MileageTracker.Controllers
     public class TripsController : Controller
     {
         private readonly MTContext _context;
+        private readonly UserManager<IdentityUser> _manager;
+        private String _userID;
 
-        public TripsController(MTContext context)
+        public TripsController(MTContext context, UserManager<IdentityUser> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         // GET: Trips
         public async Task<IActionResult> Index()
         {
-            var mTContext = _context.Trips.Include(t => t.Project).Include(t => t.Vehicle);
+            _userID = _manager.GetUserId(HttpContext.User);
+            var mTContext = _context.Trips.Where(t => t.UserGUID == _userID).Include(t => t.Project).Include(t => t.Vehicle);
             return View(await mTContext.ToListAsync());
         }
 
@@ -49,8 +54,8 @@ namespace MileageTracker.Controllers
         // GET: Trips/Create
         public IActionResult Create()
         {
-            ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "Name");
-            ViewData["VehicleID"] = new SelectList(_context.Set<Vehicle>(), "VehicleID", "Name");
+            ViewData["ProjectID"] = new SelectList(_context.Projects.Where(p => p.UserGUID == _userID), "ProjectID", "Name");
+            ViewData["VehicleID"] = new SelectList(_context.Vehicles.Where(v => v.UserGUID == _userID), "VehicleID", "Name");
             return View();
         }
 
@@ -61,14 +66,17 @@ namespace MileageTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("VehicleID,Destination,BeginMileage,EndMileage,Fee,FeeDescription,ExpenseID,ProjectID,Date,Description,Amount")] Trip trip)
         {
+            _userID = _manager.GetUserId(HttpContext.User);
+
             if (ModelState.IsValid)
             {
+                trip.UserGUID = _userID;
                 _context.Add(trip);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "Name", trip.ProjectID);
-            ViewData["VehicleID"] = new SelectList(_context.Set<Vehicle>(), "VehicleID", "Name", trip.VehicleID);
+            ViewData["ProjectID"] = new SelectList(_context.Projects.Where(p => p.UserGUID == _userID), "ProjectID", "Name", trip.ProjectID);
+            ViewData["VehicleID"] = new SelectList(_context.Vehicles.Where(v => v.UserGUID == _userID), "VehicleID", "Name", trip.VehicleID);
             return View(trip);
         }
 
