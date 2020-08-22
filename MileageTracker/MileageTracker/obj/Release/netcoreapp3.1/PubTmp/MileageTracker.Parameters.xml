@@ -3,4 +3,7 @@
   <parameter name="IIS Web Application Name" description="" value="MileageTrackerApp" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
   </parameter>
+  <parameter name="MileageTracker.Data.MTContext" description="" value="Data Source=tcp:mileagetrackerdbserver.database.windows.net,1433;Initial Catalog=MileageTracker_db;User Id=mt_azure@mileagetrackerdbserver;Password=Louis691" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\PJohnson\\Documents\\GitHub\\SWDV691_CapstoneProject\\MileageTracker\\MileageTracker\\obj\\Release\\netcoreapp3\.1\\PubTmp\\EFSQLScripts\\MileageTracker\.Data\.MTContext\.sql$" />
+  </parameter>
 </parameters>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,16 +13,20 @@ namespace MileageTracker.Models
     public class VehiclesController : Controller
     {
         private readonly MTContext _context;
+        private readonly UserManager<IdentityUser> _manager;
+        private String _userID;
 
-        public VehiclesController(MTContext context)
+        public VehiclesController(MTContext context, UserManager<IdentityUser> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vehicles.ToListAsync());
+            _userID = _manager.GetUserId(HttpContext.User);
+            return View(await _context.Vehicles.Where(v => v.UserGUID == _userID).ToListAsync());
         }
 
         // GET: Vehicles/Details/5
@@ -32,6 +37,7 @@ namespace MileageTracker.Models
                 return NotFound();
             }
 
+            _userID = _manager.GetUserId(HttpContext.User);
             var vehicle = await _context.Vehicles
                 .FirstOrDefaultAsync(m => m.VehicleID == id);
             if (vehicle == null)
@@ -55,6 +61,8 @@ namespace MileageTracker.Models
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("VehicleID,UserID,Name")] Vehicle vehicle)
         {
+            _userID = _manager.GetUserId(HttpContext.User);
+            vehicle.UserGUID = _userID;
             if (ModelState.IsValid)
             {
                 _context.Add(vehicle);
@@ -85,7 +93,7 @@ namespace MileageTracker.Models
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VehicleID,UserID,Name")] Vehicle vehicle)
+        public async Task<IActionResult> Edit(int id, [Bind("VehicleID,Name")] Vehicle vehicle)
         {
             if (id != vehicle.VehicleID)
             {

@@ -1,22 +1,21 @@
 ﻿@model MileageTracker.Models.Vehicle
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "New Vehicle";
 }
 
-<h1>Create</h1>
+<h1>New Vehicle</h1>
 
-<h4>Vehicle</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="UserID" class="control-label"></label>
                 <input asp-for="UserID" class="form-control" />
                 <span asp-validation-for="UserID" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />

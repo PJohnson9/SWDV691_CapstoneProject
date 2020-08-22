@@ -1,11 +1,23 @@
 {
   "dependencies": {
     "mssql1": {
-      "restored": true,
-      "restoreTime": "2020-08-22T02:38:47.669824Z"
+      "restored": false,
+      "restoreTime": "2020-08-22T04:21:52.3889922Z"
     }
   },
   "parameters": {
+    "MileageTrackerApp.resourceName": {
+      "Type": null,
+      "Value": "MileageTrackerApp"
+    },
+    "MileageTrackerApp.resourceGroupLocation": {
+      "Type": null,
+      "Value": "southcentralus"
+    },
+    "mssql1.resourceGroupLocation": {
+      "Type": "location",
+      "Value": "southcentralus"
+    },
     "mssql1.subscriptionId": {
       "Type": "subscription",
       "Value": "4c54f06e-de47-4212-99c4-9849f4673d4a"
@@ -13,6 +25,18 @@
     "mssql1.resourceGroupName": {
       "Type": "resourceGroup",
       "Value": "MileageTracker20200821202628ResourceGroup"
+    },
+    "MileageTrackerApp.subscriptionId": {
+      "Type": "subscription",
+      "Value": "4c54f06e-de47-4212-99c4-9849f4673d4a"
+    },
+    "MileageTrackerApp.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "MileageTracker20200821202628ResourceGroup"
+    },
+    "subscriptionId": {
+      "Type": "subscription",
+      "Value": "4c54f06e-de47-4212-99c4-9849f4673d4a"
     }
   }
 }

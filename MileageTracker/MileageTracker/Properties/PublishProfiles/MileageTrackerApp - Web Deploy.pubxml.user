@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbSMrpo1NSU+4JJFjBQTfkAAAAAACAAAAAAAQZgAAAAEAACAAAACBXz5sj5T6vYOeRWZhwDkiyGiaZk9EIIX/1IEaX9ZQfwAAAAAOgAAAAAIAACAAAACwk4qGsHHkdUaqaN8sugm4Ncd7WGLCI63uujyy1VVYIIAAAABGMDLUElYEU6m1XsJ1Nqlmudoin6/vKbROyQWo3o2KzfHzBl8ZR3AnARYXgA5c2fobO89lapDNN76IHsuvhGOC2J/Etiz93Uq3qQAIGuwrjadUR4fKrlgkYRuQOClabxszSK1IHcgRNGCcNT1ZOlyD48STNNwSXPPhCT1qAcTxnkAAAADNOOiaAX8x84DJu9A3bytS0yQ+DoQkmO6reC8n0Rmyzi9pJL+QXr0H6KJaquoKlcOF3hwLGkeXhL4Vpr+F7Fgt</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="MileageTracker.Data.MTContext">
+      <Value>Data Source=tcp:mileagetrackerdbserver.database.windows.net,1433%3bInitial Catalog=MileageTracker_db%3bUser Id=mt_azure%40mileagetrackerdbserver%3bPassword=Louis691</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>

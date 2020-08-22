@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MileageTracker.Models.Vehicle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Vehicles";
 }
 
-<h1>Index</h1>
+<h1>Vehicles</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,9 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.UserID)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -24,15 +24,15 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.UserID)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.VehicleID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VehicleID">Details</a> |
+                @*<a asp-action="Details" asp-route-id="@item.VehicleID">Details</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.VehicleID">Delete</a>
             </td>
         </tr>
