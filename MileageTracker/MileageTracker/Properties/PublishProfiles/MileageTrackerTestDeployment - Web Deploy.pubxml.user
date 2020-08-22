@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbSMrpo1NSU+4JJFjBQTfkAAAAAACAAAAAAAQZgAAAAEAACAAAADcFMtEE1jNKJX9twf9QgP6nBO+vNf9avI5vfcAHh6DQwAAAAAOgAAAAAIAACAAAABeH++MWLlr9c27mxFE8IMdrt+BK3iKFDq4ZsgS2KC2y4AAAADVxWnExkI3hU3dgrUWgrRoUpwmNTk2BKjT6bIoG2k0byf+bP+NraTMqORg9TkHvZNJfDngk9whbqp4ZXFqV9frcKNXFd16rryKPPCndSsdIbdPHriO5jW3IRCq4AHH9j0jDUp4LIKWpSfzQ/kLCT7tqYaoJ3AT1/OsVw/VyBq/aEAAAABGDmorKqtAs2dUGU6ek/GsVmLxsrwWmo2Kv6v0wQtFlJJrTsvuzQfe3T2j7eZcN2JWzGYZkZgYOSiQHvnE31kB</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MTContext">
+      <Value>Data Source=tcp:mileagetrackerdbserver.database.windows.net,1433%3bInitial Catalog=MileageTracker_db%3bUser Id=mt_azure%40mileagetrackerdbserver%3bPassword=Louis691</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MileageTracker.Data.MTContext">
+      <Value>Data Source=tcp:mileagetrackerdbserver.database.windows.net,1433%3bInitial Catalog=MileageTracker_db%3bUser Id=mt_azure%40mileagetrackerdbserver%3bPassword=Louis691</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

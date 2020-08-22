@@ -33,8 +33,8 @@ namespace MileageTracker.Services
                 EnableSsl = enableSSL
             };
             return client.SendMailAsync(
-                 //new MailMessage(userName, email, subject, htmlMessage)
-                 //{ IsBodyHtml = true }
+                 new MailMessage(userName, email, subject, htmlMessage)
+                 { IsBodyHtml = true }
             );
         }
     }

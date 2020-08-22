@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "MileageTracker/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.7",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.7",
           "Microsoft.AspNetCore.Identity.UI": "3.1.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7",
@@ -323,6 +324,20 @@
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.7": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.7"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "assemblyVersion": "3.1.7.0",
+            "fileVersion": "3.100.720.37213"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -4099,6 +4114,13 @@
       "sha512": "sha512-gQHXWNKWpTsU9RW3tSlPXzNKSr6ZgA0ldc3bKpJyHuJhB6YolEdx7/KPAxWk7vENdeovKf5ZMbzy0csUIoQVtw==",
       "path": "microsoft.aspnetcore.cryptography.keyderivation/3.1.7",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.3.1.7.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/eFXInQCcN0K2Q/7nSTDWLlE+izGbB1Rq09JvicQ21QYmxgEeAb3j8htTXV6NlsWEiVkcSTOrjePMnFl+1x8SQ==",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.7",
+      "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",

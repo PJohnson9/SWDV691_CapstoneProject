@@ -279,3 +279,11 @@ C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\Mileag
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\Razor\Views\Reports\Index.cshtml.g.cs
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\MileageTracker.csproj.CoreCompileInputs.cache
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\MileageTracker.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\obj\Debug\netcoreapp3.1\MileageTracker.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.MileageTrackerTestDeployment - Web Deploy.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MileageTrackerTestDeployment - Web Deploy\mssql1.arm.json
+C:\Users\PJohnson\Documents\GitHub\SWDV691_CapstoneProject\MileageTracker\MileageTracker\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MileageTrackerTestDeployment - Web Deploy\profile.arm.json
